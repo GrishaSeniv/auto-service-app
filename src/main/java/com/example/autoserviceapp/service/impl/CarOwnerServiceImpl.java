@@ -1,9 +1,11 @@
 package com.example.autoserviceapp.service.impl;
 
 import com.example.autoserviceapp.model.CarOwner;
+import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.repository.CarOwnerRepository;
 import com.example.autoserviceapp.service.CarOwnerService;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class CarOwnerServiceImpl implements CarOwnerService {
@@ -16,5 +18,21 @@ public class CarOwnerServiceImpl implements CarOwnerService {
     @Override
     public CarOwner getById(Long id) {
         return repository.getById(id);
+    }
+
+    @Override
+    public CarOwner save(CarOwner carOwner) {
+        return repository.save(carOwner);
+    }
+
+    @Override
+    public CarOwner update(CarOwner carOwner) {
+        return repository.save(carOwner);
+    }
+
+    @Override
+    public List<Order> getOrders(Long id) {
+        return repository.getById(id)
+                .getOrders();
     }
 }

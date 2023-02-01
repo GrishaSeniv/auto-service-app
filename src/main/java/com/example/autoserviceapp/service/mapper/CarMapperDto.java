@@ -4,9 +4,8 @@ import com.example.autoserviceapp.dto.request.CarRequestDto;
 import com.example.autoserviceapp.dto.response.CarResponseDto;
 import com.example.autoserviceapp.model.Car;
 import com.example.autoserviceapp.service.CarOwnerService;
-import org.springframework.stereotype.Component;
-
 import java.time.Year;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CarMapperDto {
@@ -34,7 +33,7 @@ public class CarMapperDto {
         carResponseDto.setModel(car.getModel());
         carResponseDto.setYear(car.getYear());
         carResponseDto.setNumber(car.getNumber());
-        carResponseDto.setCarOwner(car.getCarOwner());
+        carResponseDto.setCarOwnerId(car.getCarOwner().getId());
         return carResponseDto;
     }
 }

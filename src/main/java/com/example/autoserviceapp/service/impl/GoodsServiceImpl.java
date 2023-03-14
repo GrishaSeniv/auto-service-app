@@ -3,9 +3,8 @@ package com.example.autoserviceapp.service.impl;
 import com.example.autoserviceapp.model.Goods;
 import com.example.autoserviceapp.repository.GoodsRepository;
 import com.example.autoserviceapp.service.GoodsService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {

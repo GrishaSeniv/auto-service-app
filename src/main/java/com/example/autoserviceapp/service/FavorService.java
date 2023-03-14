@@ -1,7 +1,6 @@
 package com.example.autoserviceapp.service;
 
 import com.example.autoserviceapp.model.Favor;
-
 import java.util.List;
 
 public interface FavorService {

@@ -7,6 +7,7 @@ import com.example.autoserviceapp.service.OrderService;
 import com.example.autoserviceapp.service.mapper.OrderMapperDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import java.math.BigDecimal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/orders")
@@ -71,22 +70,23 @@ public class OrderController {
 
     @PutMapping("/status/{id}")
     @ApiOperation(value = "update status")
-    public OrderResponseDto updateStatus(@PathVariable
-                                         @ApiParam(value = "Write the order id you wand to update the status")
-                                                 Long id,
-                                         @RequestParam
-                                         @ApiParam(value = "Write the status"
-                                                 + "(ACCEPTED, IN_PROCESS, SUCCESSFULLY_COMPLETED, "
-                                                 + "UNSUCCESSFULLY_COMPLETED, PAID)")
-                                                 String status) {
-        return orderMapperDto.toDto(orderService.updateStatus(id, Order.Status.valueOf(status.toUpperCase())));
+    public OrderResponseDto updateStatus(
+            @PathVariable
+            @ApiParam(value = "Write the order id you wand to update the status") Long id,
+            @RequestParam
+            @ApiParam(value = "Write the status"
+                    + "(ACCEPTED, IN_PROCESS, SUCCESSFULLY_COMPLETED, "
+                    + "UNSUCCESSFULLY_COMPLETED, PAID)")
+                    String status) {
+        return orderMapperDto.toDto(orderService.updateStatus(id,
+                Order.Status.valueOf(status.toUpperCase())));
     }
 
     @GetMapping("/{orderId}/price")
     @ApiOperation(value = "get final price for order")
-    public BigDecimal getFinalPrice(@PathVariable
-                                    @ApiParam(value = "Write the order id you wand to get final price")
-                                            Long orderId) {
+    public BigDecimal getFinalPrice(
+            @PathVariable
+            @ApiParam(value = "Write the order id you wand to get final price") Long orderId) {
         return orderService.getFinalPrice(orderId);
     }
 }

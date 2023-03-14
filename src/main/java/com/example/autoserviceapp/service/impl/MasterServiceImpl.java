@@ -1,15 +1,14 @@
 package com.example.autoserviceapp.service.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.example.autoserviceapp.model.Favor;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.repository.MasterRepository;
 import com.example.autoserviceapp.repository.OrderRepository;
 import com.example.autoserviceapp.service.MasterService;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,7 +38,8 @@ public class MasterServiceImpl implements MasterService {
         return masterRepository.getById(id)
                 .getOrders()
                 .stream()
-                .filter(order -> order.getStatus().name().equals(Order.Status.SUCCESSFULLY_COMPLETED.name())
+                .filter(order -> order.getStatus().name()
+                        .equals(Order.Status.SUCCESSFULLY_COMPLETED.name())
                         || order.getStatus().name().equals(Order.Status.PAID.name()))
                 .collect(Collectors.toList());
     }
@@ -53,7 +53,7 @@ public class MasterServiceImpl implements MasterService {
     public String calculateSalary(Long orderId) {
         StringBuilder stringBuilder = new StringBuilder();
         Order order = orderRepository.getById(orderId);
-        if(order.getStatus().equals(Order.Status.PAID)) {
+        if (order.getStatus().equals(Order.Status.PAID)) {
             return "Salary for masters with order id: " + orderId + " have already been calculated";
         }
         List<Favor> favors = order.getFavors()

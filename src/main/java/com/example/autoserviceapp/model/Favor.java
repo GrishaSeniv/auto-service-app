@@ -21,8 +21,6 @@ public class Favor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @ManyToMany(mappedBy = "favor")
-//    private List<Order> orders;
     private String serviceName;
     @OneToOne(fetch = FetchType.LAZY)
     private Master master;

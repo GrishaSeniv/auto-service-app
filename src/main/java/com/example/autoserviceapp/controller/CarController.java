@@ -20,7 +20,6 @@ public class CarController {
     private final CarService carService;
     private final CarMapperDto carMapperDto;
 
-
     public CarController(CarService carService, CarMapperDto carMapperDto) {
         this.carService = carService;
         this.carMapperDto = carMapperDto;

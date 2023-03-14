@@ -1,5 +1,6 @@
 package com.example.autoserviceapp.model;
 
+import com.example.autoserviceapp.util.YearAttributeConverter;
 import java.time.Year;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -9,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.example.autoserviceapp.util.YearAttributeConverter;
 import lombok.Getter;
 import lombok.Setter;
 

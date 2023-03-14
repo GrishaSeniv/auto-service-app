@@ -4,10 +4,9 @@ import com.example.autoserviceapp.model.CarOwner;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.repository.CarOwnerRepository;
 import com.example.autoserviceapp.service.CarOwnerService;
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import javax.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CarOwnerServiceImpl implements CarOwnerService {

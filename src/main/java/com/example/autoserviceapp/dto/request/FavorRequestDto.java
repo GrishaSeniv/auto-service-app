@@ -1,7 +1,6 @@
 package com.example.autoserviceapp.dto.request;
 
 import com.example.autoserviceapp.model.Favor;
-
 import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;

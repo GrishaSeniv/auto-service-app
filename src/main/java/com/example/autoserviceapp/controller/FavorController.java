@@ -5,8 +5,6 @@ import com.example.autoserviceapp.dto.response.FavorResponseDto;
 import com.example.autoserviceapp.model.Favor;
 import com.example.autoserviceapp.service.FavorService;
 import com.example.autoserviceapp.service.mapper.FavorMapperDto;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.PathVariable;

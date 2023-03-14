@@ -3,11 +3,11 @@ package com.example.autoserviceapp.service.impl;
 import com.example.autoserviceapp.model.Favor;
 import com.example.autoserviceapp.repository.FavorRepository;
 import com.example.autoserviceapp.service.FavorService;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import javax.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
-@org.springframework.stereotype.Service
+@Service
 public class FavorServiceImpl implements FavorService {
     private final FavorRepository favorRepository;
 

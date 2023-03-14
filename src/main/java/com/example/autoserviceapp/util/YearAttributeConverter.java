@@ -1,8 +1,8 @@
 package com.example.autoserviceapp.util;
 
+import java.time.Year;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import java.time.Year;
 
 @Converter(autoApply = true)
 public class YearAttributeConverter implements AttributeConverter<Year, Short> {

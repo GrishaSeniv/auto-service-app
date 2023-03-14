@@ -1,6 +1,5 @@
 package com.example.autoserviceapp.dto.response;
 
-import com.example.autoserviceapp.model.Order;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,5 +13,5 @@ public class MasterResponseDto {
     private String name;
     private String lastName;
     private String surName;
-    private List<Order> orders; //return OrderDto
+    private List<OrderResponseDto> orders;
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @Setter
 public class CarOwnerResponseDto {
     private Long id;
-    private List<CarResponseDto> carResponseDtos;
-    private List<OrderResponseDto> orderResponseDtos;
+    private List<CarResponseDto> cars;
+    private List<OrderResponseDto> orders;
 }

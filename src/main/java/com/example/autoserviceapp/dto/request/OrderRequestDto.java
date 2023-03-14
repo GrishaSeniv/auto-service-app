@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -13,6 +14,6 @@ public class OrderRequestDto {
     private String description;
     private List<Long> serviceIds;
     private List<Long> goodsIds;
-    private BigDecimal price;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime expiredTime;
 }

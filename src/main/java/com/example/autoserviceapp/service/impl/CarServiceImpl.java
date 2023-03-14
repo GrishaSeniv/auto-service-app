@@ -6,6 +6,8 @@ import com.example.autoserviceapp.service.CarService;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+
 @Service
 public class CarServiceImpl implements CarService {
     private final CarRepository repository;
@@ -27,5 +29,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> findAllByIdIn(List<Long> ids) {
         return repository.findAllByIdIn(ids);
+    }
+
+    @Override
+    public Car findById(Long id) {
+        return repository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Couldn't find car by id: " + id));
     }
 }

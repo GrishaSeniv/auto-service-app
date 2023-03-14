@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,14 +27,14 @@ public class GoodsController {
 
     @PostMapping
     @ApiOperation(value = "Save goods to db")
-    public GoodsResponseDto save(GoodsRequestDto goodsRequestDto) {
+    public GoodsResponseDto save(@RequestBody GoodsRequestDto goodsRequestDto) {
         Goods goods = service.save(mapperDto.toModel(goodsRequestDto));
         return mapperDto.toDto(goods);
     }
 
     @PutMapping("/{id}")
     @ApiOperation(value = "Update good in db")
-    public GoodsResponseDto update(GoodsRequestDto goodsRequestDto,
+    public GoodsResponseDto update(@RequestBody GoodsRequestDto goodsRequestDto,
                                    @PathVariable
                                    @ApiParam(value = "Write the goods id you want to update")
                                            Long id) {

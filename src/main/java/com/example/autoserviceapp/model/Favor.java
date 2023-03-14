@@ -17,12 +17,13 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "services")
-public class Service {
+public class Favor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(fetch = FetchType.LAZY)
-    private Order order;
+//    @ManyToMany(mappedBy = "favor")
+//    private List<Order> orders;
+    private String serviceName;
     @OneToOne(fetch = FetchType.LAZY)
     private Master master;
     private BigDecimal price;

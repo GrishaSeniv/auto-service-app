@@ -5,34 +5,42 @@ import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.repository.CarOwnerRepository;
 import com.example.autoserviceapp.service.CarOwnerService;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
 public class CarOwnerServiceImpl implements CarOwnerService {
-    private final CarOwnerRepository repository;
+    private final CarOwnerRepository carOwnerRepository;
 
-    public CarOwnerServiceImpl(CarOwnerRepository repository) {
-        this.repository = repository;
+    public CarOwnerServiceImpl(CarOwnerRepository carOwnerRepository) {
+        this.carOwnerRepository = carOwnerRepository;
     }
 
     @Override
     public CarOwner getById(Long id) {
-        return repository.getById(id);
+        return carOwnerRepository.getById(id);
     }
 
     @Override
     public CarOwner save(CarOwner carOwner) {
-        return repository.save(carOwner);
+        return carOwnerRepository.save(carOwner);
     }
 
     @Override
     public CarOwner update(CarOwner carOwner) {
-        return repository.save(carOwner);
+        return carOwnerRepository.save(carOwner);
     }
 
     @Override
     public List<Order> getOrders(Long id) {
-        return repository.getById(id)
+        return carOwnerRepository.getById(id)
                 .getOrders();
+    }
+
+    @Override
+    public CarOwner findByOrders(Order order) {
+        return carOwnerRepository.findByOrders(order).orElseThrow(
+                () -> new EntityNotFoundException("Couldn't get order by id: " + order));
     }
 }

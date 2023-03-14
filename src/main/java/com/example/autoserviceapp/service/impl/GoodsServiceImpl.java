@@ -5,6 +5,8 @@ import com.example.autoserviceapp.repository.GoodsRepository;
 import com.example.autoserviceapp.service.GoodsService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GoodsServiceImpl implements GoodsService {
     private final GoodsRepository repository;
@@ -21,5 +23,10 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public Goods update(Goods goods) {
         return repository.save(goods);
+    }
+
+    @Override
+    public List<Goods> findAllByIdIn(List<Long> goodsIds) {
+        return repository.findAllByIdIn(goodsIds);
     }
 }

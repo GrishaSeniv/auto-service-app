@@ -2,16 +2,22 @@ package com.example.autoserviceapp.service.mapper;
 
 import com.example.autoserviceapp.dto.request.MasterRequestDto;
 import com.example.autoserviceapp.dto.response.MasterResponseDto;
+import com.example.autoserviceapp.dto.response.OrderResponseDto;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.service.OrderService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class MasterMapperDto {
     private final OrderService orderService;
+    private final OrderMapperDto orderMapperDto;
 
-    public MasterMapperDto(OrderService orderService) {
+    public MasterMapperDto(OrderService orderService, OrderMapperDto orderMapperDto) {
         this.orderService = orderService;
+        this.orderMapperDto = orderMapperDto;
     }
 
     public Master toModel(MasterRequestDto masterRequestDto) {
@@ -19,8 +25,12 @@ public class MasterMapperDto {
         master.setName(masterRequestDto.getName());
         master.setLastName(masterRequestDto.getLastName());
         master.setSurname(masterRequestDto.getSurname());
-        master.setOrders(orderService.findAllByIdIn(
-                masterRequestDto.getOrdersIds()));
+        if (masterRequestDto.getOrdersIds() != null) {
+            master.setOrders(orderService.findAllByIdIn(
+                    masterRequestDto.getOrdersIds()));
+        } else {
+            master.setOrders(null);
+        }
         return master;
     }
 
@@ -30,7 +40,11 @@ public class MasterMapperDto {
         masterResponseDto.setName(master.getName());
         masterResponseDto.setLastName(master.getLastName());
         masterResponseDto.setSurName(master.getSurname());
-        masterResponseDto.setOrders(master.getOrders());
+        List<OrderResponseDto> orderResponseDtos = master.getOrders()
+                .stream()
+                .map(orderMapperDto::toDto)
+                .collect(Collectors.toList());
+        masterResponseDto.setOrders(orderResponseDtos);
         return masterResponseDto;
     }
 }

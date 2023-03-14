@@ -9,4 +9,6 @@ public interface CarService {
     Car update(Car car);
 
     List<Car> findAllByIdIn(List<Long> ids);
+
+    Car findById(Long id);
 }

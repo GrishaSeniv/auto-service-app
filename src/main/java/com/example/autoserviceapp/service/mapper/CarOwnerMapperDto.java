@@ -42,12 +42,12 @@ public class CarOwnerMapperDto {
                 .stream()
                 .map(carMapperDto::toDto)
                 .collect(Collectors.toList());
-        carOwnerResponseDto.setCarResponseDtos(carResponseDtos);
+        carOwnerResponseDto.setCars(carResponseDtos);
         List<OrderResponseDto> orderResponseDtos = carOwner.getOrders()
                 .stream()
                 .map(orderMapperDto::toDto)
                 .collect(Collectors.toList());
-        carOwnerResponseDto.setOrderResponseDtos(orderResponseDtos);
+        carOwnerResponseDto.setOrders(orderResponseDtos);
         return carOwnerResponseDto;
     }
 }

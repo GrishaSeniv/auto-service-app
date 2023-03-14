@@ -26,7 +26,6 @@ public class Car {
     private String model;
     @Convert(converter = YearAttributeConverter.class)
     private Year year;
-    //    private short year;
     private String number;
     @ManyToOne(fetch = FetchType.LAZY)
     private CarOwner carOwner;

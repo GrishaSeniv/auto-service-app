@@ -1,6 +1,8 @@
 package com.example.autoserviceapp.model;
 
+import com.example.autoserviceapp.util.YearAttributeConverter;
 import java.time.Year;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,8 +23,8 @@ public class Car {
     private Long id;
     private String brand;
     private String model;
+    @Convert(converter = YearAttributeConverter.class)
     private Year year;
-    //    private short year;
     private String number;
     @ManyToOne(fetch = FetchType.LAZY)
     private CarOwner carOwner;
